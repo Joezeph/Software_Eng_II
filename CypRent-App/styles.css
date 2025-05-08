@@ -1,0 +1,74 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  display: flex;
+}
+.main-content {
+  margin-left: 250px;
+  width: 100%;
+  padding: 20px;
+}
+.fleet-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.vehicle-card {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.vehicle-card:hover {
+  transform: translateY(-5px);
+}
+.vehicle-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.vehicle-info h3 {
+  margin: 10px 0 5px;
+}
+.status {
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+.status.available {
+  background: #28a745;
+}
+.status.rented {
+  background: #ffc107;
+  color: black;
+}
+.status.maintenance {
+  background: #dc3545;
+}
+.rating {
+  margin-top: 10px;
+  color: #f39c12;
+}
+.utilization {
+  margin-top: 10px;
+  text-align: center;
+  position: relative;
+}
+.utilization svg {
+  width: 60px;
+  height: 60px;
+}
+.utilization span {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  font-weight: bold;
+}
