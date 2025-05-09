@@ -1,0 +1,36 @@
+v 1.0.0
+
+# substitute SQL with predefined lists in php for testing
+. create user list
+. create admin list
+. create account name + 2SV associative array
+
+. display username relevant to acc email in header navbar
+. create rental view page(all info) directed from clickable list item
+. display similar rental info in rentals portal and rental brief in 
+  main dashboard (last 5 rentals)
+. add activity portal in sidebar(admin access only)
+. update every action in access_log list to display later(admin access only)
+. activate action buttons in customer management list(view, edit, delete)
+  + confirmation message upon modification or deletion
+. add new customer button(redirect to new customer page)
+. vehicle card clickable to initiate new rental form(redirect to rental form)
+. display pending reservations and a create reservation button on top to
+  redirect to new reservation form and a cancel reservation button within
+  the list item
+. add a button to create new maintenance order(redirect to maint. form)
+. add button for new feedback to redirect to new feedback form
+
+v1.1.0
+
+. add search bars
+. add filters(by name, by loyalty tier, etc...)
+. make maintenance items more brief and expandable upon click
+. display actual data from rental list in rental contract
+
+v1.2.0
+
+. design optimization
+. font design
+. colors
+. display different navbar color for user & admin(better visibilty)
