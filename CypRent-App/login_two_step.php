@@ -1,15 +1,24 @@
 <?php
-
 session_start();
 
+$message = '';
+$full_key = '';
 
-if (!empty($_POST)) {
+if (isset($_POST['num1']) && isset($_POST['num2']) && isset($_POST['num3']) && isset($_POST['num4']) && isset($_POST['num5'])
+  && isset($_POST['num6'])) 
+{
   $full_key = $_POST['num1'] . $_POST['num2'] . $_POST['num3'] . $_POST['num4'] . $_POST['num5'] . $_POST['num6'];
+  // var_dump($full_key);
+  // exit;
+} 
+if(isset($_POST['submit'])){
+if($full_key == $_SESSION['user']['key']){
+  header('Location: main.php');
+  exit;
+}else {
+  $message = "Access denied";
 }
-
-
-
-
+}
 
 
 ?>
@@ -106,9 +115,9 @@ if (!empty($_POST)) {
         </button>
       </div>
       <div>
-        <?php if(isset($_POST['submit'])): ?>
-         <p style="color: black;"> <?php echo $full_key; ?></p>
-        <?php endif?>
+        <?php if (isset($_POST['submit'])): ?>
+          <p style="color: black;"> <?php echo $message; ?></p>
+        <?php endif ?>
       </div>
     </form>
     <!-- <script>
