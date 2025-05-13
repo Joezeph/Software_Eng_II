@@ -1,4 +1,5 @@
 <?php
+<<<<<<< Updated upstream
 include_once('./employees_db.php');
 
 $error = true;
@@ -19,6 +20,37 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             header('Location: login_two_step.php');
             exit();
         }
+=======
+session_start();
+include_once('./employees_db.php');//to validate login credentials
+$error = false;
+$match = false;
+$errormsg = '';
+$user_input = $_POST['email'];
+$password_input = $_POST['password'];
+
+
+
+// if(empty($_POST)){
+//   $_SESSION['employees'] = $employees;
+//   $user_input = $_POST['email'];
+//   $password_input = $_POST['password'];
+  
+// }
+// else {
+  //here we need to validate the username and passwd and
+  if($user_input != $_SESSION['employees'][0]['email'] && $password_input != $_SESSION['employees'][0]['password']){
+    $error = true;
+    $errormsg = 'Username or Password does not exist!';
+    echo $password_input;
+    // header('Location: login_two_step.php');
+    // die;
+  }else{
+    $match = true;
+    if($match && !empty($_POST)){
+      header('Location: login_two_step.php');
+      die;
+>>>>>>> Stashed changes
     }
 }else{
   $errormsg = '';
@@ -113,6 +145,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         <?php
         if ($error) {
           echo "<p>" . $errormsg . "</p>";
+        }else{
+          echo"<p></p>";
         }
         ?>
       </div>
