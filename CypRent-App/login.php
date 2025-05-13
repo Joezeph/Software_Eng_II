@@ -1,3 +1,35 @@
+<?php
+session_start();
+include_once('./employees_db.php');//to validate login credentials
+$error = false;
+$errormsg = '';
+$user_input = $_POST['email'];
+$password_input = $_POST['password'];
+
+// if(empty($_POST)){
+//   $_SESSION['employees'] = $employees;
+//   $user_input = $_POST['email'];
+//   $password_input = $_POST['password'];
+  
+// }
+// else {
+  //here we need to validate the username and passwd and
+  if($user_input != $_SESSION['employees'][0]['email'] && $password_input != $_SESSION['employees'][0]['password']){
+    $error = true;
+    $errormsg = 'Username or Password does not exist!';
+    // header('Location: login_two_step.php');
+    // die;
+  }else{
+    if(!$error && isset($_POST)){
+      header('Location: login_two_step.php');
+      die;
+    }
+  }
+  // if there is a match in the array then we redirect to 2FA
+  $error = true;
+// }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,7 +65,7 @@
         <p class="text-gray-500 mt-1">Employee Access Only</p>
       </div>
 
-      <form id="loginForm" class="space-y-4">
+      <form id="loginForm" class="space-y-4" action="login.php" method="POST">
         <!-- Email -->
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700"
@@ -92,25 +124,31 @@
             >Forgot Password?</a
           >
         </div>
-
+        <div>
+        <?php
+        if($error){
+          echo "<p>" . $errormsg . "</p>";
+        }
+        ?>
+        </div>
         <!-- Submit -->
         <div>
           <button
             type="submit"
             class="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
-          >
+            >
             Sign In
           </button>
         </div>
       </form>
-      <script>
+      <!-- <script>
         document
           .getElementById("loginForm")
           .addEventListener("submit", function (e) {
             e.preventDefault();
             window.location.href = "login_two_step.html"; // redirect
           });
-      </script>
+      </script> -->
 
       <div class="text-center text-sm text-gray-600 mt-4">
         Don’t have an account?
