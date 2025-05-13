@@ -106,9 +106,11 @@ if (!empty($_POST)) {
         </button>
       </div>
       <div>
-        <?php if(isset($_POST['submit'])): ?>
-         <p style="color: black;"> <?php echo $full_key; ?></p>
-        <?php endif?>
+        <?php
+          if(isset($_POST['submit'])){
+            echo "<p>" . $full_key . "</p>";
+          }
+        ?>
       </div>
     </form>
     <!-- <script>
