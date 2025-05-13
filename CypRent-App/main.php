@@ -1,3 +1,10 @@
+<?php 
+
+session_start();
+require_once('employees_db.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,76 +22,76 @@
     />
   </head>
   <body class="bg-gray-100 min-h-screen flex">
-    <!-- Sidebar -->
-    <aside class="w-64 bg-white shadow-md h-screen fixed">
-      <div class="p-6 text-center border-b">
-        <a href="main.html">
-          <h1 class="text-xl font-bold text-blue-600">CypRent ltd.</h1>
-        </a>
-      </div>
-      <nav class="mt-6">
-        <ul class="space-y-2">
-          <li>
-            <a
-              href="main.html"
-              class="block py-2.5 px-4 rounded-l-full bg-blue-100 text-blue-600 font-semibold flex items-center space-x-2"
-            >
-              <i class="fas fa-tachometer-alt w-5"></i><span>Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="customers.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-users mr-3"></i> Customers</a
-            >
-          </li>
-          <li>
-            <a
-              href="fleet.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-car mr-3"></i> Fleet</a
-            >
-          </li>
-          <li>
-            <a
-              href="rental_history.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-file-contract mr-3"></i> Rentals</a
-            >
-          </li>
-          <li>
-            <a
-              href="reservations.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-calendar-check mr-3"></i> Reservations</a
-            >
-          </li>
-          <li>
-            <a
-              href="maintenance.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-            >
-              <i class="fas fa-tools w-5"></i>&nbsp;Maintenance
-            </a>
-          </li>
-          <li>
-            <a
-              href="feedback.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-comment-dots mr-3"></i>Feedback</a
-            >
-          </li>
-          <li>
-            <a
-              href="financial.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-chart-line mr-3"></i> Finance</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </aside>
+      <!-- Sidebar -->
+      <aside class="w-64 bg-white shadow-md h-screen fixed">
+        <div class="p-6 text-center border-b">
+          <a href="main.php">
+            <h1 class="text-xl font-bold text-blue-600">CypRent ltd.</h1>
+          </a>
+        </div>
+        <nav class="mt-6">
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="main.php"
+                class="block py-2.5 px-4 rounded-l-full bg-blue-100 text-blue-600 font-semibold flex items-center space-x-2"
+              >
+                <i class="fas fa-tachometer-alt w-5"></i><span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="customers.php"
+                class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+                ><i class="fas fa-users mr-3"></i> Customers</a
+              >
+            </li>
+            <li>
+              <a
+                href="fleet.php"
+                class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+                ><i class="fas fa-car mr-3"></i> Fleet</a
+              >
+            </li>
+            <li>
+              <a
+                href="rental_history.php"
+                class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+                ><i class="fas fa-file-contract mr-3"></i> Rentals</a
+              >
+            </li>
+            <li>
+              <a
+                href="reservations.php"
+                class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+                ><i class="fas fa-calendar-check mr-3"></i> Reservations</a
+              >
+            </li>
+            <li>
+              <a
+                href="maintenance.php"
+                class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+              >
+                <i class="fas fa-tools w-5"></i>&nbsp;Maintenance
+              </a>
+            </li>
+            <li>
+              <a
+                href="feedback.php"
+                class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+                ><i class="fas fa-comment-dots mr-3"></i>Feedback</a
+              >
+            </li>
+            <li>
+              <a
+                href="financial.php"
+                class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+                ><i class="fas fa-chart-line mr-3"></i> Finance</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
     <!-- Main Content -->
     <main class="ml-64 flex-1">
@@ -110,7 +117,7 @@
               alt="User Avatar"
               class="w-8 h-8 rounded-full"
             />
-            <span class="text-gray-700 font-medium">User</span>
+            <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name']?></span>
           </div>
         </div>
       </div>
@@ -167,7 +174,8 @@
                 </tr>
               </thead>
               <tbody class="text-gray-700">
-                <tr class="border-b">
+                <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
+                    
                   <td class="px-6 py-4">John Doe</td>
                   <td class="px-6 py-4">Toyota Corolla</td>
                   <td class="px-6 py-4">2025-04-25</td>
@@ -175,12 +183,11 @@
                   <td class="px-6 py-4">
                     <span
                       class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded"
-                      >Active</span
-                    >
+                      >Active</span>
                   </td>
                   <td class="px-6 py-4">$180</td>
                 </tr>
-                <tr class="border-b">
+                <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
                   <td class="px-6 py-4">Jane Smith</td>
                   <td class="px-6 py-4">Honda Civic</td>
                   <td class="px-6 py-4">2025-04-20</td>
@@ -193,7 +200,7 @@
                   </td>
                   <td class="px-6 py-4">$120</td>
                 </tr>
-                <tr class="border-b">
+                <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
                   <td class="px-6 py-4">Mark Allen</td>
                   <td class="px-6 py-4">Ford Focus</td>
                   <td class="px-6 py-4">2025-04-23</td>
@@ -206,7 +213,7 @@
                   </td>
                   <td class="px-6 py-4">$0</td>
                 </tr>
-                <tr class="border-b">
+                <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
                   <td class="px-6 py-4">Sara Bennett</td>
                   <td class="px-6 py-4">Toyota Camry</td>
                   <td class="px-6 py-4">2025-05-01</td>
@@ -219,7 +226,7 @@
                   </td>
                   <td class="px-6 py-4">$180</td>
                 </tr>
-                <tr class="border-b">
+                <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
                   <td class="px-6 py-4">David Clarke</td>
                   <td class="px-6 py-4">Honda Accord</td>
                   <td class="px-6 py-4">2025-04-30</td>
@@ -232,7 +239,7 @@
                   </td>
                   <td class="px-6 py-4">$150</td>
                 </tr>
-                <tr class="border-b">
+                <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
                   <td class="px-6 py-4">Lena Hughes</td>
                   <td class="px-6 py-4">Chevrolet Malibu</td>
                   <td class="px-6 py-4">2025-04-28</td>
@@ -245,7 +252,7 @@
                   </td>
                   <td class="px-6 py-4">$130</td>
                 </tr>
-                <tr class="border-b">
+                <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
                   <td class="px-6 py-4">Kevin Tran</td>
                   <td class="px-6 py-4">Nissan Altima</td>
                   <td class="px-6 py-4">2025-05-02</td>
@@ -266,3 +273,12 @@
     </main>
   </body>
 </html>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("tr[data-href]").forEach(row => {
+      row.addEventListener("click", () => {
+        window.location.href = row.dataset.href;
+      });
+    });
+  });
+</script>

@@ -4,24 +4,31 @@ $employees = array(
     'email' => "papa.andreas@gmail.com",
     'password' => "andreas123",
     'auth' => "admin",
-    'key' => "123456"
+    'key' => "123456",
+    'name' => "Andreas"
   ],
   [
     'email' => "papa.george@gmail.com",
     'password' => "george123",
     'auth' => "admin",
-    'key' => "234567"
+    'key' => "234567",
+    'name' => "George"
+
   ],
   [
     'email' => "georgiou.maria@gmail.com",
     'password' => "maria123",
     'auth' => "user",
-    'key' => "345678"
+    'key' => "345678",
+    'name' => "Maria"
+
   ],
   [
     'email' => "andreou.kyriakos@gmail.com",
     'password' => "kyriakos123",
     'auth' => "user",
-    'key' => "456789"
+    'key' => "456789",
+    'name' => "Kyriakos"
+
   ]
 );
