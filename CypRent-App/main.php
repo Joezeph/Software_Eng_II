@@ -77,7 +77,7 @@
           </li>
           <li>
             <a
-              href="financial.html"
+              href="financial.php"
               class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
               ><i class="fas fa-chart-line mr-3"></i> Finance</a
             >
@@ -167,6 +167,7 @@
                 </tr>
               </thead>
               <tbody class="text-gray-700">
+                <a href="customers"></a>
                 <tr class="border-b">
                   <td class="px-6 py-4">John Doe</td>
                   <td class="px-6 py-4">Toyota Corolla</td>
