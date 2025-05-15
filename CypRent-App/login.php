@@ -1,26 +1,4 @@
 <?php
-<<<<<<< Updated upstream
-include_once('./employees_db.php');
-
-$error = true;
-$errormsg = 'Username or Password does not exist!';
-
-if (isset($_POST['email']) && isset($_POST['password'])) {
-    $user_input = $_POST['email'];
-    $password_input = $_POST['password'];
-
-    foreach ($employees as $employee) {
-        if ($user_input == $employee['email'] && $password_input == $employee['password']) {
-            // Login success
-            $error = false;
-            // We store user info here
-            session_start();
-            $_SESSION['user'] = $employee;
-            // Redirect to two-step verification page
-            header('Location: login_two_step.php');
-            exit();
-        }
-=======
 session_start();
 include_once('./employees_db.php');//to validate login credentials
 $error = false;
@@ -50,7 +28,6 @@ $password_input = $_POST['password'];
     if($match && !empty($_POST)){
       header('Location: login_two_step.php');
       die;
->>>>>>> Stashed changes
     }
 }else{
   $errormsg = '';
