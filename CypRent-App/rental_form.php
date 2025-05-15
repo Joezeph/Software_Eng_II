@@ -1,262 +1,260 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Rental</title>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Rental</title>
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <style>
-      body {
-        font-family: "Segoe UI", sans-serif;
-        margin: 0;
-        display: flex;
-        background: #f5f7fa;
-      }
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-      /* Sidebar */
-      .sidebar {
-        width: 250px;
-        background-color: #fff;
-        color: #1f2937;
-        height: 100vh;
-        position: fixed;
-        padding-top: 20px;
-      }
-      .sidebar h2 {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-      .sidebar a {
-        display: block;
-        padding: 12px 20px;
-        color: #1f2937;
-        text-decoration: none;
-        transition: background 0.3s;
-      }
-      .sidebar a:hover {
-        background-color: #fff;
-      }
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      display: flex;
+      background: #f5f7fa;
+    }
 
-      .main-content {
-        margin-left: 250px;
-        width: 100%;
-      }
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #fff;
+      color: #1f2937;
+      height: 100vh;
+      position: fixed;
+      padding-top: 20px;
+    }
 
-      /* Top Navbar */
-      .navbar {
-        background-color: white;
-        padding: 15px 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      }
-      .navbar-left {
-        display: flex;
-        align-items: center;
-      }
-      .navbar-left img {
-        width: 35px;
-        margin-right: 10px;
-      }
-      .navbar-right {
-        display: flex;
-        align-items: center;
-      }
-      .navbar-right i {
-        font-size: 20px;
-        margin-right: 20px;
-        cursor: pointer;
-      }
-      .navbar-right .avatar {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-      }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-      /* Form Styling */
-      .form-container {
-        padding: 30px;
-        max-width: 900px;
-        margin: auto;
-      }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #1f2937;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
 
-      .form-container h2 {
-        margin-bottom: 20px;
-      }
+    .sidebar a:hover {
+      background-color: #fff;
+    }
 
-      form {
-        background: white;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-      }
+    .main-content {
+      margin-left: 250px;
+      width: 100%;
+    }
 
-      .form-group {
-        margin-bottom: 20px;
-      }
+    /* Top Navbar */
+    .navbar {
+      background-color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
 
-      .form-group label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 6px;
-      }
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
 
-      .form-group input,
-      .form-group select,
-      .form-group textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 15px;
-      }
+    .navbar-left img {
+      width: 35px;
+      margin-right: 10px;
+    }
 
-      .form-group textarea {
-        resize: vertical;
-      }
+    .navbar-right {
+      display: flex;
+      align-items: center;
+    }
 
-      .form-row {
-        display: flex;
-        gap: 20px;
-      }
+    .navbar-right i {
+      font-size: 20px;
+      margin-right: 20px;
+      cursor: pointer;
+    }
 
-      .form-row .form-group {
-        flex: 1;
-      }
+    .navbar-right .avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
 
-      .submit-btn {
-        background-color: #1d4ed8;
-        color: white;
-        border: none;
-        padding: 12px 24px;
-        font-size: 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-      }
+    /* Form Styling */
+    .form-container {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
 
-      .submit-btn:hover {
-        background-color: #2563eb;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Sidebar -->
-    <aside class="w-64 bg-white shadow-md h-screen fixed">
-      <div class="p-6 text-center border-b">
-        <a href="main.html">
-          <h1 class="text-xl font-bold text-blue-600">CypRent ltd.</h1>
-        </a>      </div>
-      <nav class="mt-6">
-        <ul class="space-y-2">
-          <li>
-            <a
-              href="main.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-            >
-              <i class="fas fa-tachometer-alt w-5"></i><span>Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="customers.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-users mr-3"></i> Customers</a
-            >
-          </li>
-          <li>
-            <a
-              href="fleet.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-car mr-3"></i> Fleet</a
-            >
-          </li>
-          <li>
-            <a
-              href="rental_history.html"
-              class="block py-2.5 px-4 rounded-l-full bg-blue-100 text-blue-600 font-semibold flex items-center space-x-2"
-              ><i class="fas fa-file-contract mr-3"></i> Rentals</a
-            >
-          </li>
-          <li>
-            <a
-              href="reservations.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-calendar-check mr-3"></i> Reservations</a
-            >
-          </li>
-          <li>
-            <a
-              href="maintenance.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-            >
-              <i class="fas fa-tools w-5"></i>&nbsp;Maintenance
-            </a>
-          </li>
-          <li>
-            <a
-              href="feedback.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-comment-dots mr-3"></i>Feedback</a
-            >
-          </li>
-          <li>
-            <a
-              href="financial.html"
-              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"
-              ><i class="fas fa-chart-line mr-3"></i> Finance</a
-            >
-          </li>
-        </ul>
-      </nav>
+    .form-container h2 {
+      margin-bottom: 20px;
+    }
+
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .submit-btn {
+      background-color: #1d4ed8;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white shadow-md h-screen fixed">
+    <div class="p-6 text-center border-b">
+      <a href="main.php">
+        <h1 class="text-xl font-bold text-blue-600">CypRent ltd.</h1>
+      </a>
+    </div>
+    <nav class="mt-6">
+      <ul class="space-y-2">
+        <li>
+          <a
+            href="main.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600">
+            <i class="fas fa-tachometer-alt w-5"></i><span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="customers.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-users mr-3"></i> Customers</a>
+        </li>
+        <li>
+          <a
+            href="fleet.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-car mr-3"></i> Fleet</a>
+        </li>
+        <li>
+          <a
+            href="rental_history.php"
+            class="block py-2.5 px-4 rounded-l-full bg-blue-100 text-blue-600 font-semibold flex items-center space-x-2"><i class="fas fa-file-contract mr-3"></i> Rentals</a>
+        </li>
+        <li>
+          <a
+            href="reservations.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-calendar-check mr-3"></i> Reservations</a>
+        </li>
+        <li>
+          <a
+            href="maintenance.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600">
+            <i class="fas fa-tools w-5"></i>&nbsp;Maintenance
+          </a>
+        </li>
+        <li>
+          <a
+            href="feedback.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-comment-dots mr-3"></i>Feedback</a>
+        </li>
+        <li>
+          <a
+            href="financial.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-chart-line mr-3"></i> Finance</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <div class="ml-64 flex-1">
+    <!-- Navbar -->
+    <div class="flex items-center justify-between px-8 py-4 bg-white shadow">
+      <div class="flex items-center space-x-3">
+        <i class="fas fa-file-contract text-blue-600 text-2xl"></i>
+        <h1 class="text-xl font-semibold text-gray-700">Rentals</h1>
       </div>
-    </aside>
-
-    <!-- Main -->
-    <div class="ml-64 flex-1">
-      <!-- Navbar -->
-      <div class="flex items-center justify-between px-8 py-4 bg-white shadow">
-        <div class="flex items-center space-x-3">
-          <i class="fas fa-file-contract text-blue-600 text-2xl"></i>
-          <h1 class="text-xl font-semibold text-gray-700">Rentals</h1>
-        </div>
-        <div class="flex items-center space-x-6">
-          <button class="relative">
-            <i class="fas fa-bell text-gray-600 text-lg"></i>
-            <span
-              class="absolute top-0 right-0 inline-block w-2 h-2 bg-red-600 rounded-full"
-            ></span>
-          </button>
-          <div class="flex items-center space-x-2">
-            <img
-              src="https://i.pravatar.cc/30"
-              alt="User Avatar"
-              class="w-8 h-8 rounded-full"
-            />
-            <span class="text-gray-700 font-medium">User</span>
-          </div>
+      <div class="flex items-center space-x-6">
+        <button class="relative">
+          <i class="fas fa-bell text-gray-600 text-lg"></i>
+          <span
+            class="absolute top-0 right-0 inline-block w-2 h-2 bg-red-600 rounded-full"></span>
+        </button>
+        <div class="flex items-center space-x-2">
+          <img
+            src="https://i.pravatar.cc/30"
+            alt="User Avatar"
+            class="w-8 h-8 rounded-full" />
+          <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name']?></span>
         </div>
       </div>
+    </div>
 
-      <!-- Rental Form -->
-      <main class="p-8 max-w-5xl mx-auto">
+    <!-- Rental Form -->
+    <main class="p-8 max-w-5xl mx-auto">
       <div class="bg-white p-6 rounded-xl shadow">
-        <h3 class="text-2xl font-semibold mb-6">  
-            <i class="fas fa-file-contract mr-2 text-blue-500"></i>Rental
+        <h3 class="text-2xl font-semibold mb-6">
+          <i class="fas fa-file-contract mr-2 text-blue-500"></i>Rental
           Form
         </h3>
         <form id="rentalContract">
@@ -320,8 +318,7 @@
               <textarea
                 id="notes"
                 rows="3"
-                placeholder="Any special notes..."
-              ></textarea>
+                placeholder="Any special notes..."></textarea>
             </div>
           </div>
 
@@ -332,13 +329,14 @@
         <script>
           document
             .getElementById("rentalContract")
-            .addEventListener("submit", function (e) {
+            .addEventListener("submit", function(e) {
               e.preventDefault();
-              window.location.href = "rental_contract.html"; // redirect
+              window.location.href = "rental_contract.php"; // redirect
             });
         </script>
       </div>
-      </main>
-    </div>
-  </body>
+    </main>
+  </div>
+</body>
+
 </html>

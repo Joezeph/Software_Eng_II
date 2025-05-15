@@ -4,24 +4,234 @@ $employees = array(
     'email' => "papa.andreas@gmail.com",
     'password' => "andreas123",
     'auth' => "admin",
-    'key' => "123456"
+    'key' => "123456",
+    'name' => "Andreas"
   ],
   [
     'email' => "papa.george@gmail.com",
     'password' => "george123",
     'auth' => "admin",
-    'key' => "234567"
+    'key' => "234567",
+    'name' => "George"
+
   ],
   [
     'email' => "georgiou.maria@gmail.com",
     'password' => "maria123",
     'auth' => "user",
-    'key' => "345678"
+    'key' => "345678",
+    'name' => "Maria"
+
   ],
   [
     'email' => "andreou.kyriakos@gmail.com",
     'password' => "kyriakos123",
     'auth' => "user",
-    'key' => "456789"
+    'key' => "456789",
+    'name' => "Kyriakos"
+
   ]
 );
+
+$cars = [
+  [
+    "name" => "Toyota Camry 2022",
+    "plate" => "ABC-123",
+    "vin" => "1HGCM82633A004352",
+    "branch" => "Larnaca",
+    "status" => "Available",
+    "mileage" => 35000,
+    "rate" => 45,
+    "last_maintenance" => "2025-03-15",
+    "rating" => 4.3,
+    "utilization" => 76,
+    "image" => "images/camry-2022.png"
+  ],
+  [
+    "name" => "Ford Explorer 2021",
+    "plate" => "DEF-456",
+    "vin" => "1FAFP404X1F234567",
+    "branch" => "Paphos",
+    "status" => "Rented",
+    "mileage" => 62000,
+    "rate" => 70,
+    "last_maintenance" => "2025-04-01",
+    "rating" => 4.7,
+    "utilization" => 89,
+    "image" => "images/explorer-2021.jpg"
+  ],
+  [
+    "name" => "BMW 5 Series 2023",
+    "plate" => "GHI-789",
+    "vin" => "WBA5A7C54GG123456",
+    "branch" => "Limassol",
+    "status" => "Maintenance",
+    "mileage" => 21000,
+    "rate" => 110,
+    "last_maintenance" => "2025-04-20",
+    "rating" => 4.9,
+    "utilization" => 64,
+    "image" => "images/bmw-2023.png"
+  ],
+  [
+    "name" => "Chevrolet Camaro 2022",
+    "plate" => "JKL-321",
+    "vin" => "2G1FB1E36F9138765",
+    "branch" => "Agia Napa",
+    "status" => "Available",
+    "mileage" => 12000,
+    "rate" => 95,
+    "last_maintenance" => "2025-03-05",
+    "rating" => 4.5,
+    "utilization" => 52,
+    "image" => "images/camaro-2022.jpg"
+  ],
+  [
+    "name" => "RAM 1500 2021",
+    "plate" => "MNO-654",
+    "vin" => "3C6JR7DT0DG123987",
+    "branch" => "Nicosia",
+    "status" => "Rented",
+    "mileage" => 78000,
+    "rate" => 85,
+    "last_maintenance" => "2025-02-28",
+    "rating" => 4.0,
+    "utilization" => 91,
+    "image" => "images/ram-2020.jpg"
+  ],
+  [
+    "name" => "Mercedes Benz E 220 2022",
+    "plate" => "EXP-538",
+    "vin" => "324JR7DF0DG1B3F89",
+    "branch" => "Larnaca",
+    "status" => "Maintenance",
+    "mileage" => 102000,
+    "rate" => 95,
+    "last_maintenance" => "2025-03-30",
+    "rating" => 3.2,
+    "utilization" => 75,
+    "image" => "images/mercedes-2022.png"
+  ]
+];
+
+$customers = [
+    1 => [
+        "id" => 101,
+        "name" => "John Doe",
+        "email" => "john@example.com",
+        "phone" => "+1 555-123-4567",
+        "license" => "DLX12345678",
+        "licenseExpiry" => "2025-05-10",
+        "loyaltyLevel" => "Gold"
+    ],
+    2 => [
+        "id" => 102,
+        "name" => "Jane Smith",
+        "email" => "jane@demo.com",
+        "phone" => "+1 555-987-6543",
+        "license" => "DLX56789012",
+        "licenseExpiry" => "2026-01-22",
+        "loyaltyLevel" => "Platinum"
+    ],
+    3 => [
+        "id" => 103,
+        "name" => "Carlos Rivera",
+        "email" => "carlos@mail.com",
+        "phone" => "+1 555-321-9999",
+        "license" => "DLX99887766",
+        "licenseExpiry" => "2025-08-30",
+        "loyaltyLevel" => "Silver"
+    ],
+    4 => [
+        "id" => 104,
+        "name" => "Alicia Morgan",
+        "email" => "alicia.morgan@mail.com",
+        "phone" => "+1 555-772-1122",
+        "license" => "DLB44556622",
+        "licenseExpiry" => "2025-07-22",
+        "loyaltyLevel" => "Gold"
+    ],
+    5 => [
+        "id" => 105,
+        "name" => "Jin Park",
+        "email" => "jinpark@email.com",
+        "phone" => "+1 555-100-8899",
+        "license" => "DLZ44332211",
+        "licenseExpiry" => "2025-06-15",
+        "loyaltyLevel" => "Silver"
+    ],
+    6 => [
+        "id" => 106,
+        "name" => "Emily Zhang",
+        "email" => "emily.zhang@mail.com",
+        "phone" => "+1 555-456-3322",
+        "license" => "DLF77889900",
+        "licenseExpiry" => "2025-03-09",
+        "loyaltyLevel" => "Bronze"
+    ],
+    7 => [
+        "id" => 107,
+        "name" => "Mohammed Ali",
+        "email" => "ali.mohammed@mail.com",
+        "phone" => "+1 555-654-3333",
+        "license" => "DLQ00112233",
+        "licenseExpiry" => "2025-05-04",
+        "loyaltyLevel" => "Gold"
+    ],
+    8 => [
+        "id" => 108,
+        "name" => "Sophie Laurent",
+        "email" => "sophie.laurent@mail.com",
+        "phone" => "+1 555-765-1002",
+        "license" => "DLM11223344",
+        "licenseExpiry" => "2025-01-17",
+        "loyaltyLevel" => "Silver"
+    ],
+    9 => [
+        "id" => 109,
+        "name" => "Raj Patel",
+        "email" => "raj.patel@mail.com",
+        "phone" => "+1 555-229-3344",
+        "license" => "DLP99887766",
+        "licenseExpiry" => "2025-09-10",
+        "loyaltyLevel" => "Gold"
+    ],
+    10 => [
+        "id" => 110,
+        "name" => "Lucia Fernandez",
+        "email" => "luciaf@mail.com",
+        "phone" => "+1 555-881-1020",
+        "license" => "DLK33445566",
+        "licenseExpiry" => "2025-04-02",
+        "loyaltyLevel" => "Bronze"
+    ],
+    11 => [
+        "id" => 111,
+        "name" => "Noah Johnson",
+        "email" => "noah.johnson@mail.com",
+        "phone" => "+1 555-337-9911",
+        "license" => "DLX12344321",
+        "licenseExpiry" => "2025-02-12",
+        "loyaltyLevel" => "Gold"
+    ],
+    12 => [
+        "id" => 112,
+        "name" => "Yara Kim",
+        "email" => "yara.kim@mail.com",
+        "phone" => "+1 555-234-5611",
+        "license" => "DLR66554433",
+        "licenseExpiry" => "2025-07-05",
+        "loyaltyLevel" => "Silver"
+    ],
+    13 => [
+        "id" => 113,
+        "name" => "George Wallace",
+        "email" => "george.w@mail.com",
+        "phone" => "+1 555-988-2211",
+        "license" => "DLT22334455",
+        "licenseExpiry" => "2025-08-01",
+        "loyaltyLevel" => "Bronze"
+    ]
+];
+?>
+
