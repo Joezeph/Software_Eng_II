@@ -1,5 +1,10 @@
 <?php
 session_start();
+require_once('functions.php');
+
+$db = connectToDB();
+
+$rental_history = rental_history($db);
 ?>
 
 <!DOCTYPE html>
@@ -73,6 +78,11 @@ session_start();
             href="financial.php"
             class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-chart-line mr-3"></i> Finance</a>
         </li>
+        <li>
+          <a
+            href="access_log.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-lock mr-3"></i> Access Log</a>
+        </li>
       </ul>
     </nav>
   </aside>
@@ -96,7 +106,7 @@ session_start();
             src="https://i.pravatar.cc/30"
             alt="User Avatar"
             class="w-8 h-8 rounded-full" />
-          <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name']?></span>
+          <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name'] ?></span>
         </div>
       </div>
     </div>
@@ -117,119 +127,47 @@ session_start();
         <table class="min-w-full text-sm text-left text-gray-700">
           <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
             <tr>
-              <th class="px-6 py-3">Customer</th>
-              <th class="px-6 py-3">Vehicle</th>
-              <th class="px-6 py-3">Start Date</th>
-              <th class="px-6 py-3">End Date</th>
-              <th class="px-6 py-3">Status</th>
-              <th class="px-6 py-3">Cost</th>
-              <th class="px-6 py-3">Payment</th>
+              <th class="px-6 py-3 text-left">Customer</th>
+              <th class="px-6 py-3 text-left">Employee</th>
+              <th class="px-6 py-3 text-left">Vehicle</th>
+              <th class="px-6 py-3 text-left">Start</th>
+              <th class="px-6 py-3 text-left">End</th>
+              <th class="px-6 py-3 text-left">Status</th>
+              <th class="px-6 py-3 text-left">Cost</th>
+              <th class="px-6 py-3 text-left">Payment Method</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4">John Doe</td>
-              <td class="px-6 py-4">Toyota Corolla</td>
-              <td class="px-6 py-4">2025-04-15</td>
-              <td class="px-6 py-4">2025-04-20</td>
-              <td class="px-6 py-4">
-                <span
-                  class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Completed</span>
-              </td>
-              <td class="px-6 py-4">$160</td>
-              <td class="px-6 py-4">Credit Card</td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4">Jane Smith</td>
-              <td class="px-6 py-4">Honda Civic</td>
-              <td class="px-6 py-4">2025-03-22</td>
-              <td class="px-6 py-4">2025-03-25</td>
-              <td class="px-6 py-4">
-                <span
-                  class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Completed</span>
-              </td>
-              <td class="px-6 py-4">$135</td>
-              <td class="px-6 py-4">Cash</td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4">Mark Allen</td>
-              <td class="px-6 py-4">Ford Focus</td>
-              <td class="px-6 py-4">2025-04-10</td>
-              <td class="px-6 py-4">2025-04-12</td>
-              <td class="px-6 py-4">
-                <span
-                  class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-semibold">Cancelled</span>
-              </td>
-              <td class="px-6 py-4">$0</td>
-              <td class="px-6 py-4">—</td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4">Emily Stone</td>
-              <td class="px-6 py-4">Honda Civic</td>
-              <td class="px-6 py-4">2025-03-10</td>
-              <td class="px-6 py-4">2025-03-14</td>
-              <td class="px-6 py-4">
-                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Completed</span>
-              </td>
-              <td class="px-6 py-4">$145</td>
-              <td class="px-6 py-4">Debit Card</td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4">Carlos Mendez</td>
-              <td class="px-6 py-4">Chevrolet Malibu</td>
-              <td class="px-6 py-4">2025-04-02</td>
-              <td class="px-6 py-4">2025-04-06</td>
-              <td class="px-6 py-4">
-                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Completed</span>
-              </td>
-              <td class="px-6 py-4">$175</td>
-              <td class="px-6 py-4">Cash</td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4">Ava Peterson</td>
-              <td class="px-6 py-4">Nissan Altima</td>
-              <td class="px-6 py-4">2025-03-25</td>
-              <td class="px-6 py-4">2025-03-30</td>
-              <td class="px-6 py-4">
-                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Completed</span>
-              </td>
-              <td class="px-6 py-4">$200</td>
-              <td class="px-6 py-4">Credit Card</td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4">James Liu</td>
-              <td class="px-6 py-4">Ford Fusion</td>
-              <td class="px-6 py-4">2025-04-10</td>
-              <td class="px-6 py-4">2025-04-13</td>
-              <td class="px-6 py-4">
-                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Completed</span>
-              </td>
-              <td class="px-6 py-4">$120</td>
-              <td class="px-6 py-4">Bank Transfer</td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4">Sophia Zhang</td>
-              <td class="px-6 py-4">Hyundai Elantra</td>
-              <td class="px-6 py-4">2025-04-05</td>
-              <td class="px-6 py-4">2025-04-09</td>
-              <td class="px-6 py-4">
-                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Completed</span>
-              </td>
-              <td class="px-6 py-4">$135</td>
-              <td class="px-6 py-4">Credit Card</td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4">Liam Carter</td>
-              <td class="px-6 py-4">Volkswagen Jetta</td>
-              <td class="px-6 py-4">2025-03-28</td>
-              <td class="px-6 py-4">2025-04-01</td>
-              <td class="px-6 py-4">
-                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Completed</span>
-              </td>
-              <td class="px-6 py-4">$155</td>
-              <td class="px-6 py-4">Mobile Payment</td>
-            </tr>
+          <tbody class="text-gray-700">
+            <?php foreach ($rental_history as $row): ?>
+              <!-- Main visible row -->
+              <tr title="Click to see more info" class="border-b cursor-pointer hover:bg-gray-100 transition" onclick="toggleDetails(this)">
+                <td class="px-6 py-4"><?= htmlspecialchars($row['customer_name']) ?></td>
+                <td class="px-6 py-4"><?= htmlspecialchars($row['employee_name']) ?></td>
+                <td class="px-6 py-4"><?= htmlspecialchars($row['vehicle_make']) ?></td>
+                <td class="px-6 py-4"><?= htmlspecialchars($row['rented_from']) ?></td>
+                <td class="px-6 py-4"><?= htmlspecialchars($row['rented_to']) ?></td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 <?= $row['status'] ?> text-xs font-semibold rounded">
+                    <?= htmlspecialchars($row['status']) ?>
+                  </span>
+                </td>
+                <td class="px-6 py-4">$<?= number_format($row['total_cost']) ?></td>
+                <td class="px-6 py-4"><?= htmlspecialchars($row['payment_method']) ?></td>
+              </tr>
 
+              <!-- Hidden details row -->
+              <tr class="details-row hidden bg-gray-50 text-sm">
+                <td colspan="8" class="px-6 py-4">
+                  <div class="grid grid-cols-2 gap-4">
+                    <div><strong>Odometer Start:</strong> <?= htmlspecialchars($row['odometer_start']) ?> km</div>
+                    <div><strong>Odometer End:</strong> <?= htmlspecialchars($row['odometer_end']) ?> km</div>
+                    <div><strong>Deposit:</strong> $<?= number_format($row['deposit_amount']) ?></div>
+                    <div><strong>Notes:</strong> <?= htmlspecialchars($row['note'] ?? 'No notes.') ?></div>
+                    <div><strong>Reservation Created:</strong> <?= htmlspecialchars($row['created_at']) ?></div>
+                  </div>
+                </td>
+              </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>
@@ -238,3 +176,19 @@ session_start();
 </body>
 
 </html>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("tr[data-href]").forEach(row => {
+      row.addEventListener("click", () => {
+        window.location.href = row.dataset.href;
+      });
+    });
+  });
+
+  function toggleDetails(row) {
+    const next = row.nextElementSibling;
+    if (next && next.classList.contains('details-row')) {
+      next.classList.toggle('hidden');
+    }
+  }
+</script>

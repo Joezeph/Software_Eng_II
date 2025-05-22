@@ -74,6 +74,11 @@ session_start();
             href="financial.php"
             class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-chart-line mr-3"></i> Finance</a>
         </li>
+        <li>
+          <a
+            href="access_log.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-lock mr-3"></i> Access Log</a>
+        </li>
       </ul>
     </nav>
   </aside>
@@ -93,7 +98,7 @@ session_start();
             src="https://i.pravatar.cc/30"
             alt="User Avatar"
             class="w-8 h-8 rounded-full" />
-          <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name']?></span>
+          <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name'] ?></span>
         </div>
       </div>
     </div>

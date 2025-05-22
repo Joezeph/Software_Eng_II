@@ -1,7 +1,16 @@
 <?php
 
 session_start();
-require_once('employees_db.php');
+require_once('functions.php');
+
+$db = connectToDB();
+
+$employees = call_employees($db);
+$rentals = call_rentals($db);
+
+$recent_rentals = recent_rentals($db);
+
+
 
 ?>
 
@@ -21,7 +30,7 @@ require_once('employees_db.php');
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    .stats-cards{
+    .stats-cards {
       background-color: white;
       display: flex;
       flex-direction: column;
@@ -32,7 +41,8 @@ require_once('employees_db.php');
       border-radius: 8px;
       padding: 20px;
     }
-    .stats-cards:hover{
+
+    .stats-cards:hover {
       transform: translateY(-5px);
     }
   </style>
@@ -91,6 +101,11 @@ require_once('employees_db.php');
           <a
             href="financial.php"
             class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-chart-line mr-3"></i> Finance</a>
+        </li>
+        <li>
+          <a
+            href="access_log.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-lock mr-3"></i> Access Log</a>
         </li>
       </ul>
     </nav>
@@ -168,84 +183,20 @@ require_once('employees_db.php');
               </tr>
             </thead>
             <tbody class="text-gray-700">
-              <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
-
-                <td class="px-6 py-4">John Doe</td>
-                <td class="px-6 py-4">Toyota Corolla</td>
-                <td class="px-6 py-4">2025-04-25</td>
-                <td class="px-6 py-4">2025-04-30</td>
-                <td class="px-6 py-4">
-                  <span
-                    class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded">Active</span>
-                </td>
-                <td class="px-6 py-4">$180</td>
-              </tr>
-              <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
-                <td class="px-6 py-4">Jane Smith</td>
-                <td class="px-6 py-4">Honda Civic</td>
-                <td class="px-6 py-4">2025-04-20</td>
-                <td class="px-6 py-4">2025-04-22</td>
-                <td class="px-6 py-4">
-                  <span
-                    class="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded">Completed</span>
-                </td>
-                <td class="px-6 py-4">$120</td>
-              </tr>
-              <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
-                <td class="px-6 py-4">Mark Allen</td>
-                <td class="px-6 py-4">Ford Focus</td>
-                <td class="px-6 py-4">2025-04-23</td>
-                <td class="px-6 py-4">2025-04-24</td>
-                <td class="px-6 py-4">
-                  <span
-                    class="px-2 py-1 bg-red-100 text-red-800 text-xs font-semibold rounded">Cancelled</span>
-                </td>
-                <td class="px-6 py-4">$0</td>
-              </tr>
-              <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
-                <td class="px-6 py-4">Sara Bennett</td>
-                <td class="px-6 py-4">Toyota Camry</td>
-                <td class="px-6 py-4">2025-05-01</td>
-                <td class="px-6 py-4">2025-05-04</td>
-                <td class="px-6 py-4">
-                  <span
-                    class="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded">Completed</span>
-                </td>
-                <td class="px-6 py-4">$180</td>
-              </tr>
-              <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
-                <td class="px-6 py-4">David Clarke</td>
-                <td class="px-6 py-4">Honda Accord</td>
-                <td class="px-6 py-4">2025-04-30</td>
-                <td class="px-6 py-4">2025-05-02</td>
-                <td class="px-6 py-4">
-                  <span
-                    class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded">Pending</span>
-                </td>
-                <td class="px-6 py-4">$150</td>
-              </tr>
-              <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
-                <td class="px-6 py-4">Lena Hughes</td>
-                <td class="px-6 py-4">Chevrolet Malibu</td>
-                <td class="px-6 py-4">2025-04-28</td>
-                <td class="px-6 py-4">2025-04-30</td>
-                <td class="px-6 py-4">
-                  <span
-                    class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded">Confirmed</span>
-                </td>
-                <td class="px-6 py-4">$130</td>
-              </tr>
-              <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./customers.php">
-                <td class="px-6 py-4">Kevin Tran</td>
-                <td class="px-6 py-4">Nissan Altima</td>
-                <td class="px-6 py-4">2025-05-02</td>
-                <td class="px-6 py-4">2025-05-05</td>
-                <td class="px-6 py-4">
-                  <span
-                    class="px-2 py-1 bg-red-100 text-red-800 text-xs font-semibold rounded">Cancelled</span>
-                </td>
-                <td class="px-6 py-4">$0</td>
-              </tr>
+              <?php foreach ($recent_rentals as $row): ?>
+                <tr class="border-b cursor-pointer hover:bg-gray-100 transition" data-href="./rental_history.php">
+                  <td class="px-6 py-4"><?= htmlspecialchars($row['customer_name']) ?></td>
+                  <td class="px-6 py-4"><?= htmlspecialchars($row['vehicle_make']) ?></td>
+                  <td class="px-6 py-4"><?= htmlspecialchars($row['rented_from']) ?></td>
+                  <td class="px-6 py-4"><?= htmlspecialchars($row['rented_to']) ?></td>
+                  <td class="px-6 py-4">
+                    <span class="px-2 py-1 <?= $row['status'] ?> text-xs font-semibold rounded">
+                      <?= htmlspecialchars($row['status']) ?>
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">$<?= number_format($row['total_cost']) ?></td>
+                </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 
@@ -79,6 +79,11 @@ session_start();
             href="financial.php"
             class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-chart-line mr-3"></i> Finance</a>
         </li>
+        <li>
+          <a
+            href="access_log.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-lock mr-3"></i> Access Log</a>
+        </li>
       </ul>
     </nav>
   </aside>
@@ -100,7 +105,7 @@ session_start();
           src="https://randomuser.me/api/portraits/men/74.jpg"
           alt="avatar"
           class="w-9 h-9 rounded-full" />
-        <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name']?></span>
+        <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name'] ?></span>
       </div>
     </header>
 

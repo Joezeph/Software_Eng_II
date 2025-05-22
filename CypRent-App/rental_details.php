@@ -2,6 +2,17 @@
 
 session_start();
 
+require_once('employees_db.php');
+
+$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+
+if (!isset($rentals[$id])) {
+  echo "Rental not found.";
+  exit;
+}
+
+$rental = $rentals[$id];
+
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +21,7 @@ session_start();
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>New Rental</title>
+  <title>Rental View</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -96,8 +107,7 @@ session_start();
     <div class="flex items-center justify-between px-8 py-4 bg-white shadow">
       <div class="flex items-center space-x-3">
         <i class="fas fa-file-contract text-blue-600 text-2xl"></i>
-        <h1 class="text-xl font-semibold text-gray-700">Rental
-          Form</h1>
+        <h1 class="text-xl font-semibold text-gray-700">Rental Details</h1>
       </div>
       <div class="flex items-center space-x-6">
         <button class="relative">
@@ -115,90 +125,64 @@ session_start();
       </div>
     </div>
 
-    <!-- Rental Form -->
-    <main class="p-8 max-w-5xl mx-auto">
-      <div class="bg-white p-6 rounded-xl shadow">
+    <main class="p-8 max-w-3xl mx-auto">
+      <div class="bg-white shadow rounded-xl p-6 space-y-6">
+        <h1 class="text-2xl font-bold text-gray-800">Rental Contract #<?= $rental['id'] ?></h1>
 
-        <form id="rentalContract">
-          <!-- Customer Info -->
-          <div class="form-group">
-            <label for="customer">Customer</label>
-            <select id="customer">
-              <option>-- Select Customer --</option>
-              <option value="1">John Doe - john@example.com</option>
-              <option value="2">Jane Smith - jane@example.com</option>
-            </select>
+        <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+          <div>
+            <span class="font-semibold">Customer:</span> <?= htmlspecialchars($rental['customer']) ?>
           </div>
-
-          <!-- Vehicle Info -->
-          <div class="form-group">
-            <label for="vehicle">Vehicle</label>
-            <select id="vehicle">
-              <option>-- Select Vehicle --</option>
-              <option value="1">Toyota Camry - ABC-123</option>
-              <option value="2">BMW 5 Series - GHI-789</option>
-            </select>
+          <div>
+            <span class="font-semibold">Vehicle:</span> <?= htmlspecialchars($rental['vehicle']) ?>
           </div>
-
-          <!-- Rental Period -->
-          <div class="form-row">
-            <div class="form-group">
-              <label for="start_date">Rental Start Date</label>
-              <input type="date" id="start_date" />
-            </div>
-            <div class="form-group">
-              <label for="end_date">Rental End Date</label>
-              <input type="date" id="end_date" />
-            </div>
+          <div>
+            <span class="font-semibold">Handled by:</span> <?= htmlspecialchars($employees['name']) ?>
           </div>
-
-          <!-- Payment Info -->
-          <div class="form-row">
-            <div class="form-group">
-              <label for="payment_method">Payment Method</label>
-              <select id="payment_method">
-                <option>-- Select Method --</option>
-                <option value="credit">Credit Card</option>
-                <option value="cash">Cash</option>
-                <option value="paypal">PayPal</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="deposit">Deposit Amount</label>
-              <input type="number" id="deposit" placeholder="e.g. 100.00" />
-            </div>
+          <div>
+            <span class="font-semibold">Rental Period:</span>
+            <?= htmlspecialchars($rental['start']) ?> to <?= htmlspecialchars($rental['end']) ?>
           </div>
-
-          <!-- Totals and Notes -->
-          <div class="form-row">
-            <div class="form-group">
-              <label for="total_cost">Total Cost</label>
-              <input type="number" id="total_cost" placeholder="e.g. 250.00" />
-            </div>
-            <div class="form-group">
-              <label for="notes">Notes</label>
-              <textarea
-                id="notes"
-                rows="3"
-                placeholder="Any special notes..."></textarea>
-            </div>
+          <div>
+            <span class="font-semibold">Actual Return Date:</span> <?= htmlspecialchars($rental['actual_return']) ?>
           </div>
+          <div>
+            <span class="font-semibold">Odometer Start:</span> <?= number_format($rental['odometer_start']) ?> km
+          </div>
+          <div>
+            <span class="font-semibold">Odometer End:</span> <?= number_format($rental['odometer_end']) ?> km
+          </div>
+          <div>
+            <span class="font-semibold">Deposit Amount:</span> $<?= number_format($rental['deposit_amount'], 2) ?>
+          </div>
+          <div>
+            <span class="font-semibold">Deposit Status:</span> <?= htmlspecialchars($rental['deposit_status']) ?>
+          </div>
+          <div>
+            <span class="font-semibold">Deposit Date:</span> <?= htmlspecialchars($rental['deposit_date']) ?>
+          </div>
+          <div>
+            <span class="font-semibold">Payment Method:</span> <?= htmlspecialchars($rental['payment']) ?>
+          </div>
+          <div>
+            <span class="font-semibold">Total Cost:</span> $<?= number_format($rental['cost'], 2) ?>
+          </div>
+          <div>
+            <span class="font-semibold">Status:</span>
+            <span class="inline-block px-2 py-1 text-xs font-semibold rounded <?= $rental['status_class'] ?>">
+              <?= htmlspecialchars($rental['status']) ?>
+            </span>
+          </div>
+        </div>
 
-          <button class="submit-btn" type="submit">
-            <i class="fas fa-save"></i> Save Rental
-          </button>
-        </form>
-        <script>
-          document
-            .getElementById("rentalContract")
-            .addEventListener("submit", function(e) {
-              e.preventDefault();
-              window.location.href = "rental_contract.php"; // redirect
-            });
-        </script>
+        <div class="pt-4">
+          <a href="rental_history.php" class="text-blue-600 hover:underline text-sm">
+            &larr; Back to Rental History
+          </a>
+        </div>
       </div>
     </main>
-  </div>
+
 </body>
 
 </html>

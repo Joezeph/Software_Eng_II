@@ -1,6 +1,20 @@
 <?php
-session_start()
+
+session_start();
+
+if ($_SESSION['user']['role'] == 'clerk') {
+  header('Location: access_denied.php');
+  exit;
+}
+
+require_once('functions.php');
+
+$db = connectToDB();
+
+$activity_logs = call_acces_logs($db);
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,8 +22,7 @@ session_start()
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Car Rental Dashboard</title>
-
+  <title>Employee Activity Logs</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -19,7 +32,7 @@ session_start()
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
-<body class="bg-gray-100 min-h-screen flex">
+<body class="bg-gray-100 text-gray-900">
   <!-- Sidebar -->
   <aside class="w-64 bg-white shadow-md h-screen fixed">
     <div class="p-6 text-center border-b">
@@ -71,12 +84,12 @@ session_start()
         <li>
           <a
             href="financial.php"
-            class="block py-2.5 px-4 rounded-l-full bg-blue-100 text-blue-600 font-semibold flex items-center space-x-2"><i class="fas fa-chart-line mr-3"></i> Finance</a>
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-chart-line mr-3"></i> Finance</a>
         </li>
         <li>
           <a
-            href="access_log.php"
-            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-lock mr-3"></i> Access Log</a>
+            href="access_logs.php"
+            class="block py-2.5 px-4 rounded-l-full bg-blue-100 text-blue-600 font-semibold flex items-center space-x-2"><i class="fas fa-lock mr-3"></i> Access Log</a>
         </li>
       </ul>
     </nav>
@@ -87,10 +100,9 @@ session_start()
     <!-- Navbar -->
     <div class="flex items-center justify-between px-8 py-4 bg-white shadow">
       <div class="flex items-center space-x-3">
-        <i class="fas fa-chart-line text-blue-600 text-2xl"></i>
-        <h1 class="text-xl font-semibold text-gray-700">
-          Financial Overview
-        </h1>
+        <!-- <i class="fas fa-car text-blue-600 text-2xl"></i> -->
+        <i class="fas fa-lock text-blue-600 text-2xl w-5"></i>
+        <h1 class="text-xl font-semibold text-gray-700">Activity Overview</h1>
       </div>
       <div class="flex items-center space-x-6">
         <button class="relative">
@@ -103,24 +115,45 @@ session_start()
             src="https://i.pravatar.cc/30"
             alt="User Avatar"
             class="w-8 h-8 rounded-full" />
-          <span class="text-gray-700 font-medium">User</span>
+          <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name'] ?></span>
         </div>
       </div>
     </div>
 
-    <!-- Access Denied Message -->
-    <div class="p-8 flex items-center justify-center h-[80vh]">
-      <div
-        class="bg-red-100 border border-red-400 text-red-700 px-6 py-5 rounded shadow text-center max-w-lg">
-        <i class="fas fa-exclamation-triangle text-3xl text-red-500 mb-4"></i>
-        <h2 class="text-2xl font-bold mb-2">Access Denied</h2>
-        <p class="text-md">
-          Administrator privileges are required to access the Financial
-          Dashboard.
-        </p>
-      </div>
-    </div>
+    <!-- Rental History Table -->
+    <div class="bg-white shadow rounded-lg overflow-x-auto">
+      <table class="min-w-full text-sm text-left text-gray-700">
+        <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+          <tr>
+            <th class="px-6 py-3">ID</th>
+            <th class="px-6 py-3">Employee ID</th>
+            <th class="px-6 py-3">Action</th>
+            <th class="px-6 py-3">Description</th>
+            <th class="px-6 py-3">IP Address</th>
+            <th class="px-6 py-3">User Agent</th>
+            <th class="px-6 py-3">Timestamp</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <?php foreach ($activity_logs as $log): ?>
+            <tr class="hover:bg-gray-50">
+              <td class="px-6 py-4"><?= htmlspecialchars($log['id']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($log['employee_name']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($log['action']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($log['description']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($log['ip_address']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($log['user_agent']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($log['timestamp']) ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
   </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-600 mt-8 p-4">
+    &copy; 2025 CypRent ltd. | Employee Audit Logs
+  </footer>
 </body>
 
 </html>

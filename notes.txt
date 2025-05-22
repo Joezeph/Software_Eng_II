@@ -3,12 +3,12 @@ v 1.0.0
 # substitute SQL with predefined lists in php for testing
 . create user list
 . create admin list
-. create account name + 2SV associative array
+. create account name + 2SV associative array ✔
 
-. display username relevant to acc email in header navbar
-. create rental view page(all info) directed from clickable list item
+. display username relevant to acc email in header navbar ✔
+. create rental view page( all info) directed from clickable list item ✔
 . display similar rental info in rentals portal and rental brief in 
-  main dashboard (last 5 rentals)
+  main dashboard (last 5 rentals) ✔
 . add activity portal in sidebar(admin access only)
 . update every action in access_log list to display later(admin access only)
 . activate action buttons in customer management list(view, edit, delete)
@@ -20,6 +20,8 @@ v 1.0.0
   the list item
 . add a button to create new maintenance order(redirect to maint. form)
 . add button for new feedback to redirect to new feedback form
+. status in rental history table make them colorful
+. logout button 
 
 v1.1.0
 
@@ -34,3 +36,24 @@ v1.2.0
 . font design
 . colors
 . display different navbar color for user & admin(better visibilty)
+
+
+
+D4: 24 points
+15 points User Interface
+2 points HCI justification
+Complete ERD 3 points
+Relational Schema 
+1 point hardware/software
+
+
+D5: 42 points
+25 points implementation
+5 points SQL query
+5 points system evaluation(mnekhod l prototype lal user byaate comments mnerjaa mn zabet)
+user manual
+project evaluation
+2 points quality of final report
+
+the whole report (ma3 l previous Ds)
+

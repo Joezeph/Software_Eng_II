@@ -1,5 +1,12 @@
 <?php
 session_start();
+require_once('functions.php');
+
+if ($_SESSION['user']['role'] == 'clerk') {
+  header('Location: access_denied.php');
+  exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -80,6 +87,11 @@ session_start();
             href="financial.php"
             class="block py-2.5 px-4 rounded-l-full bg-blue-100 text-blue-600 font-semibold flex items-center space-x-2"><i class="fas fa-chart-line mr-3"></i> Finance</a>
         </li>
+        <li>
+          <a
+            href="access_log.php"
+            class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-lock mr-3"></i> Access Log</a>
+        </li>
       </ul>
     </nav>
   </aside>
@@ -101,7 +113,7 @@ session_start();
           src="https://randomuser.me/api/portraits/men/74.jpg"
           alt="avatar"
           class="w-9 h-9 rounded-full" />
-        <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name']?></span>
+        <span class="text-gray-700 font-medium"><?php echo $_SESSION['user']['name'] ?></span>
       </div>
     </header>
 

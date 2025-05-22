@@ -1,13 +1,13 @@
 <?php
 $employees = array(
-  [
+  1 => [
     'email' => "papa.andreas@gmail.com",
     'password' => "andreas123",
     'auth' => "admin",
     'key' => "123456",
     'name' => "Andreas"
   ],
-  [
+  2 => [
     'email' => "papa.george@gmail.com",
     'password' => "george123",
     'auth' => "admin",
@@ -15,7 +15,7 @@ $employees = array(
     'name' => "George"
 
   ],
-  [
+  3 => [
     'email' => "georgiou.maria@gmail.com",
     'password' => "maria123",
     'auth' => "user",
@@ -23,7 +23,7 @@ $employees = array(
     'name' => "Maria"
 
   ],
-  [
+  4 => [
     'email' => "andreou.kyriakos@gmail.com",
     'password' => "kyriakos123",
     'auth' => "user",
@@ -115,123 +115,286 @@ $cars = [
 ];
 
 $customers = [
-    1 => [
-        "id" => 101,
-        "name" => "John Doe",
-        "email" => "john@example.com",
-        "phone" => "+1 555-123-4567",
-        "license" => "DLX12345678",
-        "licenseExpiry" => "2025-05-10",
-        "loyaltyLevel" => "Gold"
-    ],
-    2 => [
-        "id" => 102,
-        "name" => "Jane Smith",
-        "email" => "jane@demo.com",
-        "phone" => "+1 555-987-6543",
-        "license" => "DLX56789012",
-        "licenseExpiry" => "2026-01-22",
-        "loyaltyLevel" => "Platinum"
-    ],
-    3 => [
-        "id" => 103,
-        "name" => "Carlos Rivera",
-        "email" => "carlos@mail.com",
-        "phone" => "+1 555-321-9999",
-        "license" => "DLX99887766",
-        "licenseExpiry" => "2025-08-30",
-        "loyaltyLevel" => "Silver"
-    ],
-    4 => [
-        "id" => 104,
-        "name" => "Alicia Morgan",
-        "email" => "alicia.morgan@mail.com",
-        "phone" => "+1 555-772-1122",
-        "license" => "DLB44556622",
-        "licenseExpiry" => "2025-07-22",
-        "loyaltyLevel" => "Gold"
-    ],
-    5 => [
-        "id" => 105,
-        "name" => "Jin Park",
-        "email" => "jinpark@email.com",
-        "phone" => "+1 555-100-8899",
-        "license" => "DLZ44332211",
-        "licenseExpiry" => "2025-06-15",
-        "loyaltyLevel" => "Silver"
-    ],
-    6 => [
-        "id" => 106,
-        "name" => "Emily Zhang",
-        "email" => "emily.zhang@mail.com",
-        "phone" => "+1 555-456-3322",
-        "license" => "DLF77889900",
-        "licenseExpiry" => "2025-03-09",
-        "loyaltyLevel" => "Bronze"
-    ],
-    7 => [
-        "id" => 107,
-        "name" => "Mohammed Ali",
-        "email" => "ali.mohammed@mail.com",
-        "phone" => "+1 555-654-3333",
-        "license" => "DLQ00112233",
-        "licenseExpiry" => "2025-05-04",
-        "loyaltyLevel" => "Gold"
-    ],
-    8 => [
-        "id" => 108,
-        "name" => "Sophie Laurent",
-        "email" => "sophie.laurent@mail.com",
-        "phone" => "+1 555-765-1002",
-        "license" => "DLM11223344",
-        "licenseExpiry" => "2025-01-17",
-        "loyaltyLevel" => "Silver"
-    ],
-    9 => [
-        "id" => 109,
-        "name" => "Raj Patel",
-        "email" => "raj.patel@mail.com",
-        "phone" => "+1 555-229-3344",
-        "license" => "DLP99887766",
-        "licenseExpiry" => "2025-09-10",
-        "loyaltyLevel" => "Gold"
-    ],
-    10 => [
-        "id" => 110,
-        "name" => "Lucia Fernandez",
-        "email" => "luciaf@mail.com",
-        "phone" => "+1 555-881-1020",
-        "license" => "DLK33445566",
-        "licenseExpiry" => "2025-04-02",
-        "loyaltyLevel" => "Bronze"
-    ],
-    11 => [
-        "id" => 111,
-        "name" => "Noah Johnson",
-        "email" => "noah.johnson@mail.com",
-        "phone" => "+1 555-337-9911",
-        "license" => "DLX12344321",
-        "licenseExpiry" => "2025-02-12",
-        "loyaltyLevel" => "Gold"
-    ],
-    12 => [
-        "id" => 112,
-        "name" => "Yara Kim",
-        "email" => "yara.kim@mail.com",
-        "phone" => "+1 555-234-5611",
-        "license" => "DLR66554433",
-        "licenseExpiry" => "2025-07-05",
-        "loyaltyLevel" => "Silver"
-    ],
-    13 => [
-        "id" => 113,
-        "name" => "George Wallace",
-        "email" => "george.w@mail.com",
-        "phone" => "+1 555-988-2211",
-        "license" => "DLT22334455",
-        "licenseExpiry" => "2025-08-01",
-        "loyaltyLevel" => "Bronze"
-    ]
+  1 => [
+    "id" => 101,
+    "name" => "John Doe",
+    "email" => "john@example.com",
+    "phone" => "+1 555-123-4567",
+    "license" => "DLX12345678",
+    "licenseExpiry" => "2025-05-10",
+    "loyaltyLevel" => "Gold"
+  ],
+  2 => [
+    "id" => 102,
+    "name" => "Jane Smith",
+    "email" => "jane@demo.com",
+    "phone" => "+1 555-987-6543",
+    "license" => "DLX56789012",
+    "licenseExpiry" => "2026-01-22",
+    "loyaltyLevel" => "Platinum"
+  ],
+  3 => [
+    "id" => 103,
+    "name" => "Carlos Rivera",
+    "email" => "carlos@mail.com",
+    "phone" => "+1 555-321-9999",
+    "license" => "DLX99887766",
+    "licenseExpiry" => "2025-08-30",
+    "loyaltyLevel" => "Silver"
+  ],
+  4 => [
+    "id" => 104,
+    "name" => "Alicia Morgan",
+    "email" => "alicia.morgan@mail.com",
+    "phone" => "+1 555-772-1122",
+    "license" => "DLB44556622",
+    "licenseExpiry" => "2025-07-22",
+    "loyaltyLevel" => "Gold"
+  ],
+  5 => [
+    "id" => 105,
+    "name" => "Jin Park",
+    "email" => "jinpark@email.com",
+    "phone" => "+1 555-100-8899",
+    "license" => "DLZ44332211",
+    "licenseExpiry" => "2025-06-15",
+    "loyaltyLevel" => "Silver"
+  ],
+  6 => [
+    "id" => 106,
+    "name" => "Emily Zhang",
+    "email" => "emily.zhang@mail.com",
+    "phone" => "+1 555-456-3322",
+    "license" => "DLF77889900",
+    "licenseExpiry" => "2025-03-09",
+    "loyaltyLevel" => "Bronze"
+  ],
+  7 => [
+    "id" => 107,
+    "name" => "Mohammed Ali",
+    "email" => "ali.mohammed@mail.com",
+    "phone" => "+1 555-654-3333",
+    "license" => "DLQ00112233",
+    "licenseExpiry" => "2025-05-04",
+    "loyaltyLevel" => "Gold"
+  ],
+  8 => [
+    "id" => 108,
+    "name" => "Sophie Laurent",
+    "email" => "sophie.laurent@mail.com",
+    "phone" => "+1 555-765-1002",
+    "license" => "DLM11223344",
+    "licenseExpiry" => "2025-01-17",
+    "loyaltyLevel" => "Silver"
+  ],
+  9 => [
+    "id" => 109,
+    "name" => "Raj Patel",
+    "email" => "raj.patel@mail.com",
+    "phone" => "+1 555-229-3344",
+    "license" => "DLP99887766",
+    "licenseExpiry" => "2025-09-10",
+    "loyaltyLevel" => "Gold"
+  ],
+  10 => [
+    "id" => 110,
+    "name" => "Lucia Fernandez",
+    "email" => "luciaf@mail.com",
+    "phone" => "+1 555-881-1020",
+    "license" => "DLK33445566",
+    "licenseExpiry" => "2025-04-02",
+    "loyaltyLevel" => "Bronze"
+  ],
+  11 => [
+    "id" => 111,
+    "name" => "Noah Johnson",
+    "email" => "noah.johnson@mail.com",
+    "phone" => "+1 555-337-9911",
+    "license" => "DLX12344321",
+    "licenseExpiry" => "2025-02-12",
+    "loyaltyLevel" => "Gold"
+  ],
+  12 => [
+    "id" => 112,
+    "name" => "Yara Kim",
+    "email" => "yara.kim@mail.com",
+    "phone" => "+1 555-234-5611",
+    "license" => "DLR66554433",
+    "licenseExpiry" => "2025-07-05",
+    "loyaltyLevel" => "Silver"
+  ],
+  13 => [
+    "id" => 113,
+    "name" => "George Wallace",
+    "email" => "george.w@mail.com",
+    "phone" => "+1 555-988-2211",
+    "license" => "DLT22334455",
+    "licenseExpiry" => "2025-08-01",
+    "loyaltyLevel" => "Bronze"
+  ]
 ];
-?>
 
+$rentals = [
+  1 => [
+    'id' => 1,
+    'customer' => 'John Doe',
+    'vehicle' => 'Toyota Corolla',
+    'employee_id' => 1,
+    'start' => '2025-04-15',
+    'end' => '2025-04-20',
+    'actual_return' => '2025-04-20',
+    'odometer_start' => 15420,
+    'odometer_end' => 15780,
+    'deposit_amount' => 100,
+    'deposit_status' => 'Refunded',
+    'deposit_date' => '2025-04-21',
+    'payment' => 'Credit Card',
+    'cost' => 160,
+    'status' => 'Completed',
+    'status_class' => 'bg-green-100 text-green-800',
+  ],
+  2 => [
+    'id' => 2,
+    'customer' => 'Jane Smith',
+    'vehicle' => 'Honda Civic',
+    'employee_id' => 2,
+    'start' => '2025-03-22',
+    'end' => '2025-03-25',
+    'actual_return' => '2025-03-25',
+    'odometer_start' => 20300,
+    'odometer_end' => 20510,
+    'deposit_amount' => 80,
+    'deposit_status' => 'Refunded',
+    'deposit_date' => '2025-03-26',
+    'payment' => 'Cash',
+    'cost' => 135,
+    'status' => 'Completed',
+    'status_class' => 'bg-green-100 text-green-800',
+  ],
+  3 => [
+    'id' => 3,
+    'customer' => 'Mark Allen',
+    'vehicle' => 'Ford Focus',
+    'employee_id' => 1,
+    'start' => '2025-04-10',
+    'end' => '2025-04-12',
+    'actual_return' => '2025-04-10',
+    'odometer_start' => 50100,
+    'odometer_end' => 50100,
+    'deposit_amount' => 0,
+    'deposit_status' => 'N/A',
+    'deposit_date' => '',
+    'payment' => '—',
+    'cost' => 0,
+    'status' => 'Cancelled',
+    'status_class' => 'bg-red-100 text-red-800',
+  ],
+  4 => [
+    'id' => 4,
+    'customer' => 'Emily Stone',
+    'vehicle' => 'Honda Civic',
+    'employee_id' => 3,
+    'start' => '2025-03-10',
+    'end' => '2025-03-14',
+    'actual_return' => '2025-03-14',
+    'odometer_start' => 28750,
+    'odometer_end' => 29000,
+    'deposit_amount' => 90,
+    'deposit_status' => 'Refunded',
+    'deposit_date' => '2025-03-15',
+    'payment' => 'Debit Card',
+    'cost' => 145,
+    'status' => 'Completed',
+    'status_class' => 'bg-green-100 text-green-800',
+  ],
+  5 => [
+    'id' => 5,
+    'customer' => 'Carlos Mendez',
+    'vehicle' => 'Chevrolet Malibu',
+    'employee_id' => 2,
+    'start' => '2025-04-02',
+    'end' => '2025-04-06',
+    'actual_return' => '2025-04-06',
+    'odometer_start' => 33200,
+    'odometer_end' => 33560,
+    'deposit_amount' => 100,
+    'deposit_status' => 'Refunded',
+    'deposit_date' => '2025-04-07',
+    'payment' => 'Cash',
+    'cost' => 175,
+    'status' => 'Completed',
+    'status_class' => 'bg-green-100 text-green-800',
+  ],
+  6 => [
+    'id' => 6,
+    'customer' => 'Ava Peterson',
+    'vehicle' => 'Nissan Altima',
+    'employee_id' => 1,
+    'start' => '2025-03-25',
+    'end' => '2025-03-30',
+    'actual_return' => '2025-03-30',
+    'odometer_start' => 41000,
+    'odometer_end' => 41400,
+    'deposit_amount' => 120,
+    'deposit_status' => 'Refunded',
+    'deposit_date' => '2025-03-31',
+    'payment' => 'Credit Card',
+    'cost' => 200,
+    'status' => 'Completed',
+    'status_class' => 'bg-green-100 text-green-800',
+  ],
+  7 => [
+    'id' => 7,
+    'customer' => 'James Liu',
+    'vehicle' => 'Ford Fusion',
+    'employee_id' => 2,
+    'start' => '2025-04-10',
+    'end' => '2025-04-13',
+    'actual_return' => '2025-04-13',
+    'odometer_start' => 47500,
+    'odometer_end' => 47750,
+    'deposit_amount' => 80,
+    'deposit_status' => 'Refunded',
+    'deposit_date' => '2025-04-14',
+    'payment' => 'Bank Transfer',
+    'cost' => 120,
+    'status' => 'Completed',
+    'status_class' => 'bg-green-100 text-green-800',
+  ],
+  8 => [
+    'id' => 8,
+    'customer' => 'Sophia Zhang',
+    'vehicle' => 'Hyundai Elantra',
+    'employee_id' => 3,
+    'start' => '2025-04-05',
+    'end' => '2025-04-09',
+    'actual_return' => '2025-04-09',
+    'odometer_start' => 26000,
+    'odometer_end' => 26320,
+    'deposit_amount' => 90,
+    'deposit_status' => 'Refunded',
+    'deposit_date' => '2025-04-10',
+    'payment' => 'Credit Card',
+    'cost' => 135,
+    'status' => 'Completed',
+    'status_class' => 'bg-green-100 text-green-800',
+  ],
+  9 => [
+    'id' => 9,
+    'customer' => 'Liam Carter',
+    'vehicle' => 'Volkswagen Jetta',
+    'employee_id' => 1,
+    'start' => '2025-03-28',
+    'end' => '2025-04-01',
+    'actual_return' => '2025-04-01',
+    'odometer_start' => 19800,
+    'odometer_end' => 20110,
+    'deposit_amount' => 95,
+    'deposit_status' => 'Refunded',
+    'deposit_date' => '2025-04-02',
+    'payment' => 'Mobile Payment',
+    'cost' => 155,
+    'status' => 'Completed',
+    'status_class' => 'bg-green-100 text-green-800',
+  ],
+];

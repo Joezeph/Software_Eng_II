@@ -1,5 +1,8 @@
 <?php
-include_once('./employees_db.php');
+include_once('functions.php');
+
+$db = connectToDB();
+$employees = call_employees($db);
 
 $error = true;
 $errormsg = 'Username or Password does not exist!';
@@ -125,17 +128,9 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         </button>
       </div>
     </form>
-    <!-- <script>
-        document
-          .getElementById("loginForm")
-          .addEventListener("submit", function (e) {
-            e.preventDefault();
-            window.location.href = "login_two_step.html"; // redirect
-          });
-      </script> -->
 
     <div class="text-center text-sm text-gray-600 mt-4">
-      Don’t have an account?
+      Don't have an account?
       <a href="/contact-admin" class="text-blue-600 hover:underline">Contact administrator</a>
     </div>
 

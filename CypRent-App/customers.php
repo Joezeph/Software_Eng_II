@@ -1,7 +1,11 @@
 <?php
 
 session_start();
-require_once('employees_db.php');
+require_once('functions.php');
+
+$db = connectToDB();
+
+$customers = call_customers($db);
 
 ?>
 
@@ -82,6 +86,11 @@ require_once('employees_db.php');
               href="financial.php"
               class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-chart-line mr-3"></i> Finance</a>
           </li>
+          <li>
+            <a
+              href="access_log.php"
+              class="flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600"><i class="fas fa-lock mr-3"></i> Access Log</a>
+          </li>
         </ul>
       </nav>
     </aside>
@@ -138,13 +147,13 @@ require_once('employees_db.php');
                   <td class="px-4 py-3 font-medium"><?php echo $customer['name']; ?></td>
                   <td class="px-4 py-3"><?php echo $customer['email']; ?></td>
                   <td class="px-4 py-3"><?php echo $customer['phone']; ?></td>
-                  <td class="px-4 py-3"><?php echo $customer['license']; ?></td>
-                  <td class="px-4 py-3 <?php echo strtotime($customer['licenseExpiry']) < time() ? 'text-red-600 font-semibold' : ''; ?>">
-                    <?php echo $customer['licenseExpiry']; ?>
+                  <td class="px-4 py-3"><?php echo $customer['license_number']; ?></td>
+                  <td class="px-4 py-3 <?php echo strtotime($customer['license_expiry']) < time() ? 'text-red-600 font-semibold' : ''; ?>">
+                    <?php echo $customer['license_expiry']; ?>
                   </td>
                   <td class="px-4 py-3">
-                    <span class="bg-<?php echo $customer['loyaltyLevel'] == 'Gold' ? 'yellow' : ($customer['loyaltyLevel'] == 'Silver' ? 'blue' : 'green'); ?>-100 text-<?php echo $customer['loyaltyLevel'] == 'Gold' ? 'yellow' : ($customer['loyaltyLevel'] == 'Silver' ? 'blue' : 'green'); ?>-800 px-2 py-1 rounded-full text-xs">
-                      <?php echo $customer['loyaltyLevel']; ?>
+                    <span class="bg-<?php echo $customer['loyalty_tier'] == 'gold' ? 'yellow' : ($customer['loyalty_tier'] == 'silver' ? 'blue' : 'green'); ?>-100 text-<?php echo $customer['loyalty_tier'] == 'gold' ? 'yellow' : ($customer['loyalty_tier'] == 'silver' ? 'blue' : 'green'); ?>-800 px-2 py-1 rounded-full text-xs">
+                      <?php echo $customer['loyalty_tier']; ?>
                     </span>
                   </td>
                   <td class="px-4 py-3 space-x-2">
