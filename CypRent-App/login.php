@@ -4,28 +4,29 @@ include_once('functions.php');
 $db = connectToDB();
 $employees = call_employees($db);
 
-$error = true;
-$errormsg = 'Username or Password does not exist!';
 
-if (isset($_POST['email']) && isset($_POST['password'])) {
-    $user_input = $_POST['email'];
-    $password_input = $_POST['password'];
 
-    foreach ($employees as $employee) {
-        if ($user_input == $employee['email'] && $password_input == $employee['password']) {
-            // Login success
-            $error = false;
-            // We store user info here
-            session_start();
-            $_SESSION['user'] = $employee;
-            // Redirect to two-step verification page
-            header('Location: login_two_step.php');
-            exit();
-        }
+// if(empty($_POST)){
+//   $_SESSION['employees'] = $employees;
+//   $user_input = $_POST['email'];
+//   $password_input = $_POST['password'];
+  
+// }
+// else {
+  //here we need to validate the username and passwd and
+  if($user_input != $_SESSION['employees'][0]['email'] && $password_input != $_SESSION['employees'][0]['password']){
+    $error = true;
+    $errormsg = 'Username or Password does not exist!';
+    echo $password_input;
+    // header('Location: login_two_step.php');
+    // die;
+  }else{
+    $match = true;
+    if($match && !empty($_POST)){
+      header('Location: login_two_step.php');
+      die;
     }
-}else{
-  $errormsg = '';
-}
+  }
 
 ?>
 <!DOCTYPE html>
@@ -116,6 +117,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         <?php
         if ($error) {
           echo "<p>" . $errormsg . "</p>";
+        }else{
+          echo"<p></p>";
         }
         ?>
       </div>
